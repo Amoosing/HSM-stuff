@@ -1,0 +1,53 @@
+from PeriodicTable import RAM
+print("Chemistry Calculator")
+
+
+mmOrIdealGas=input("Type 1 for moles or mass calculations or Type 2 for ideal Gas calculations: ")
+if mmOrIdealGas=="1":
+    element=input("Enter an Element:")
+    if element not in RAM:
+        print("Incorrect input")
+    else:
+        print("The Ar of your element is", RAM[element])
+    massOrMoles=input("Type 1 if you would like the moles of " + element + " or Type 2 for the mass: ")
+    if massOrMoles=="1":
+        mass=float(input("Enter the mass of your element: "))
+        moles=mass/RAM[element]
+        print("The moles of your element is", moles)
+    elif massOrMoles=="2":
+        moles=float(input("Enter the moles of your element: "))
+        mass=moles*RAM[element]
+        print("The mass of your element is", mass)
+    else:
+        print("Incorrect input")
+
+elif mmOrIdealGas=="2":
+    idealGas=input("Type 1 to work out pressure, 2 to work out volume, 3 to work out moles or 4 to work out temperature: ")
+    if idealGas=="1":
+        volume=float(input("Enter your volume: "))
+        moles2=float(input("Enter your moles: "))
+        temp=float(input("Enter your temperature: "))
+        pressure= moles2 * 8.314 * temp/volume
+        print("The pressure is", pressure)
+    elif idealGas=="2":
+        pressure=float(input("Enter your pressure: "))
+        moles2=float(input("Enter your moles: "))
+        temp=float(input("Enter your temperature: "))
+        volume=moles2 * 8.314 * temp /pressure
+        print("The volume is", volume)
+    elif idealGas=="3":
+        pressure=float(input("Enter your pressure: "))
+        volume=float(input("Enter your volume: "))
+        temp=float(input("Enter your temperature: "))
+        moles=pressure*volume/8.314/temp
+        print("The moles are", moles)
+    elif idealGas =="4":
+        pressure=float(input("Enter your pressure: "))
+        volume=float(input("Enter your volume: "))
+        moles=float(input("Enter your moles: "))
+        temp=pressure*volume/moles/8.314
+        print("The temperature is", temp)
+    else:
+        print("Incorrect input")
+else:
+    print("Incorrect input")
